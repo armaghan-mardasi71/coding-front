@@ -50,14 +50,17 @@
 //     console.log("yekshanbe");
 //     break;
 //   case 3:
-//     console.log("seshanbe");
+//     console.log("doshanbe");
 //     break;
 //   case 4:
-//     console.log("chaharshanbe");
+//     console.log("seshanbe");
 //     break;
 //   case 5:
-//     console.log("panjshanbe");
+//     console.log("chaharshanbe");
 //     break;
 //   case 6:
+//     console.log("panjshanbe");
+//     break;
+//   case 7:
 //     console.log("jome");
 // }
