@@ -27,22 +27,24 @@
 //---------------------------------------------
 
 // ex 4:
-// let contacts = [
-//   { id: 1, name: "armaghan", number: 9309665106 },
-//   { id: 2, name: "sara", number: 9124562123 },
-//   { id: 3, name: "hadis", number: 9365469878 }
-// ];
+let contacts = [
+  { id: 1, name: "armaghan", number: 9309665106 },
+  { id: 2, name: "sara", number: 9124562123 },
+  { id: 3, name: "hadis", number: 9365469878 }
+];
+let userInput = prompt("enter your name:");
+if (userInput) {
+  findContact(userInput);
+}
 
-// function findContact(contactName: string) {
-//   let mainContact = contacts.some((person) => {
-//     return person.name === contactName;
-//   });
+function findContact(contactName: string) {
+  let mainContact = contacts.some((person) => {
+    return person.name === contactName;
+  });
 
-//   if (mainContact) {
-//     console.log("contact is available");
-//   } else {
-//     console.log("Sorry,contact is NOT available");
-//   }
-// }
-
-// findContact("sara");
+  if (mainContact) {
+    console.log("contact is available");
+  } else {
+    console.log("Sorry,contact is NOT available");
+  }
+}
