@@ -39,7 +39,7 @@
 // console.log(nextColor);
 
 //exercise 4
-// let day: number = 3;
+// let day: number = 7;
 
 // switch (day) {
 //   case 1:
