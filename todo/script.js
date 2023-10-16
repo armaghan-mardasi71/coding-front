@@ -2,21 +2,23 @@ let addBtn = document.querySelector("button");
 let input = document.querySelector("input");
 let todosContainer = document.querySelector(".todos-wrapper");
 let filterBtn = document.getElementById("select-box");
+
 let allTodos = [];
 
 function addNewTodo() {
   let inputValue = input.value;
+  if (inputValue) {
+    let newTodo = {
+      id: allTodos.length + 1,
+      title: inputValue,
+      isDone: false
+    };
 
-  let newTodo = {
-    id: allTodos.length + 1,
-    title: inputValue,
-    isDone: false
-  };
-
-  allTodos.push(newTodo);
-  setLocal(allTodos);
-  generateTodo(allTodos);
-  clearInputs();
+    allTodos.push(newTodo);
+    setLocal(allTodos);
+    // generateTodo(allTodos);
+    clearInputs();
+  }
 }
 
 function clearInputs() {
@@ -107,6 +109,14 @@ function filterHandler() {
   }
 }
 
+function searchHandler() {
+  let searchValue = allTodos.filter((todo) => {
+    return todo.title.includes(input.value);
+  });
+  generateTodo(searchValue);
+}
+
 addBtn.addEventListener("click", addNewTodo);
 window.addEventListener("load", getLocal);
 filterBtn.addEventListener("change", filterHandler);
+input.addEventListener("keyup", searchHandler);
