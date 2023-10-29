@@ -2,6 +2,7 @@ let addBtn = document.querySelector("button");
 let input = document.querySelector("input");
 let todosContainer = document.querySelector(".todos-wrapper");
 let filterBtn = document.getElementById("select-box");
+let fetchBtn = document.querySelector(".fetch");
 
 let allTodos = [];
 
@@ -17,17 +18,16 @@ function addNewTodo() {
     allTodos.push(newTodo);
     setLocal(allTodos);
     // generateTodo(allTodos);
-    clearInputs();
   }
-}
-
-function clearInputs() {
-  input.value = "";
 }
 
 function setLocal(allTodos) {
   localStorage.setItem("todos", JSON.stringify(allTodos));
   generateTodo(allTodos);
+}
+
+function clearInputs() {
+  input.value = "";
 }
 
 function generateTodo(allTodos) {
@@ -116,7 +116,17 @@ function searchHandler() {
   generateTodo(searchValue);
 }
 
+function fetchData() {
+  fetch("https://jsonplaceholder.typicode.com/todos")
+    .then((res) => res.json())
+    .then((data) => {
+      allTodos = data;
+      setLocal(allTodos);
+    });
+}
+
 addBtn.addEventListener("click", addNewTodo);
 window.addEventListener("load", getLocal);
 filterBtn.addEventListener("change", filterHandler);
 input.addEventListener("keyup", searchHandler);
+fetchBtn.addEventListener("click", fetchData);
