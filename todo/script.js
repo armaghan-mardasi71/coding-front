@@ -3,6 +3,7 @@ let input = document.querySelector("input");
 let todosContainer = document.querySelector(".todos-wrapper");
 let filterBtn = document.getElementById("select-box");
 let fetchBtn = document.querySelector(".fetch");
+let allDrafts = [];
 
 let allTodos = [];
 
@@ -21,8 +22,10 @@ function addNewTodo() {
   }
 }
 
-function setLocal(allTodos) {
+function setLocal(allTodos, drafts) {
   localStorage.setItem("todos", JSON.stringify(allTodos));
+
+  localStorage.setItem("drafts", JSON.stringify(drafts));
   generateTodo(allTodos);
 }
 
@@ -65,6 +68,7 @@ function generateTodo(allTodos) {
 
 function getLocal() {
   let allData = JSON.parse(localStorage.getItem("todos"));
+  let myDrafts = JSON.parse(localStorage.getItem("drafts"));
 
   if (allData) {
     allTodos = allData;
@@ -73,6 +77,8 @@ function getLocal() {
   }
 
   generateTodo(allTodos);
+
+  input.value = myDrafts;
 }
 
 function statusToggler(todo) {
@@ -113,6 +119,7 @@ function searchHandler() {
   let searchValue = allTodos.filter((todo) => {
     return todo.title.includes(input.value);
   });
+
   generateTodo(searchValue);
 }
 
@@ -125,8 +132,16 @@ function fetchData() {
     });
 }
 
+function draftHandler(e) {
+  console.log(e.key);
+
+  allDrafts = input.value.split(" ").join("");
+  setLocal(allTodos, allDrafts);
+}
+
 addBtn.addEventListener("click", addNewTodo);
 window.addEventListener("load", getLocal);
 filterBtn.addEventListener("change", filterHandler);
 input.addEventListener("keyup", searchHandler);
+input.addEventListener("keyup", draftHandler);
 fetchBtn.addEventListener("click", fetchData);
