@@ -1,0 +1,28 @@
+.todo-item-wrapper {
+  width: 200px;
+  padding: 10px 30px;
+  font-weight: bolder;
+  border-radius: 20px;
+  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+.remove-todo-btn {
+  background-color: red;
+  font-weight: bold;
+  width: 25px;
+  height: 25px;
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: none;
+}
+.actions-wrapper {
+  display: flex;
+}
